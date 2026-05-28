@@ -44,6 +44,8 @@ def query_predictions(
     limit: int = 50,
     offset: int = 0,
 ) -> tuple[list[dict], int]:
+    if not DB_PATH.exists():
+        return [], 0
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
 
