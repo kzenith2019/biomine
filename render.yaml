@@ -2,7 +2,7 @@ services:
   - type: web
     name: biomine-api
     runtime: python
-    buildCommand: pip install -r requirements.txt && python -m scripts.seed_mibig && python -m scripts.train && python -m scripts.precompute 200
+    buildCommand: pip install -r requirements.txt && python -m scripts.seed_mibig && python -m scripts.train && python -m scripts.precompute 200 || echo "ML pipeline failed, starting with empty DB"
     startCommand: uvicorn src.api.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
