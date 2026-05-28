@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { ResultsTable } from '../components/ResultsTable'
+import { API } from '../api'
 
 const CLASSES = ['antibiotic', 'antifungal', 'anticancer', 'immunosuppressant', 'other']
 
@@ -18,7 +19,7 @@ export function Explore() {
     if (minBgc > 0) params.set('min_bgc_score', minBgc)
     if (minDrug > 0) params.set('min_drug_potential', minDrug)
     try {
-      const res = await fetch(`/api/explore?${params}`)
+      const res = await fetch(API.explore(params))
       const data = await res.json()
       setResults(data.results)
       setTotal(data.total)

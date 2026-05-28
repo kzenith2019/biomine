@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ScoreCard } from '../components/ScoreCard'
 import { ShapChart } from '../components/ShapChart'
 import { GenomeBrowser } from '../components/GenomeBrowser'
+import { API } from '../api'
 
 export function Submit() {
   const [result, setResult] = useState(null)
@@ -19,7 +20,7 @@ export function Submit() {
     const formData = new FormData()
     formData.append('file', file)
     try {
-      const res = await fetch('/api/predict', { method: 'POST', body: formData })
+      const res = await fetch(API.predict, { method: 'POST', body: formData })
       if (!res.ok) {
         const err = await res.json()
         throw new Error(err.detail || 'Prediction failed')
