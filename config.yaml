@@ -1,0 +1,7 @@
+mibig_url: "https://dl.secondarymetabolites.org/mibig/mibig_json_3.1.tar.gz"
+n_ncbi_genomes: 50
+n_negative_per_genome: 3
+region_length: 10000
+output_dir: "data"
+antismash_timeout: 3600
+entrez_email: "your.email@example.com"
