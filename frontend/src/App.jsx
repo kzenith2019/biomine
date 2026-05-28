@@ -7,10 +7,13 @@ export function App() {
   return (
     <div className="app">
       <nav className="navbar">
-        <span className="brand">BioMine</span>
+        <span className="brand">
+          <span className="brand-dot" />
+          BioMine
+        </span>
         <div className="nav-links">
           <Link to="/" className={pathname === '/' ? 'active' : ''}>Explore</Link>
-          <Link to="/submit" className={pathname === '/submit' ? 'active' : ''}>Submit Genome</Link>
+          <Link to="/submit" className={pathname === '/submit' ? 'active' : ''}>Submit</Link>
         </div>
       </nav>
       <main className="main">

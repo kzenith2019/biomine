@@ -6,7 +6,7 @@ export function ShapChart({ features }) {
 
   return (
     <div className="shap-chart">
-      <h3>Top Features (SHAP Importance)</h3>
+      <h3>Feature Importance (SHAP)</h3>
       {sorted.map(([name, value]) => (
         <div key={name} className="shap-row">
           <div className="shap-name" title={name}>{name}</div>

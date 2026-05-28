@@ -22,10 +22,16 @@ def get_predictor() -> BioMinePredictor:
     return _predictor
 
 
+def _pubmed_query(bioactivity_class: str) -> str:
+    if bioactivity_class == "other":
+        return "biosynthetic gene cluster secondary metabolite Streptomyces"
+    return f"biosynthetic gene cluster {bioactivity_class} Streptomyces"
+
+
 async def _enrich(bioactivity_class: str) -> tuple[list[PaperResult], list[SimilarBGC]]:
     try:
         papers_raw, bgcs_raw = await asyncio.gather(
-            search_pubmed(bioactivity_class, max_results=3),
+            search_pubmed(_pubmed_query(bioactivity_class), max_results=3),
             search_compounds(bioactivity_class, max_results=3),
             return_exceptions=True,
         )

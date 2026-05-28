@@ -42,29 +42,40 @@ export function Explore() {
 
   return (
     <div>
-      <h1>Explore BGC Database</h1>
+      <h1>BGC Database</h1>
+      <p className="page-subtitle">Browse and filter predicted biosynthetic gene clusters</p>
+
       <div className="filters">
         <select value={bioClass} onChange={e => setBioClass(e.target.value)}>
           <option value="">All classes</option>
           {CLASSES.map(c => <option key={c} value={c}>{c}</option>)}
         </select>
-        <label>Min BGC Score: {minBgc}
+
+        <label>
+          BGC Score ≥ <span className="filter-val">{minBgc.toFixed(2)}</span>
           <input type="range" min="0" max="1" step="0.05" value={minBgc}
-            onChange={e => setMinBgc(+e.target.value)} style={{ marginLeft: '0.5rem' }} />
+            onChange={e => setMinBgc(+e.target.value)} />
         </label>
-        <label>Min Novelty: {minNovelty}
+
+        <label>
+          Novelty ≥ <span className="filter-val">{minNovelty.toFixed(2)}</span>
           <input type="range" min="0" max="1" step="0.05" value={minNovelty}
-            onChange={e => setMinNovelty(+e.target.value)} style={{ marginLeft: '0.5rem' }} />
+            onChange={e => setMinNovelty(+e.target.value)} />
         </label>
-        <label>Min Drug Potential: {minDrug}
+
+        <label>
+          Drug Potential ≥ <span className="filter-val">{minDrug.toFixed(2)}</span>
           <input type="range" min="0" max="1" step="0.05" value={minDrug}
-            onChange={e => setMinDrug(+e.target.value)} style={{ marginLeft: '0.5rem' }} />
+            onChange={e => setMinDrug(+e.target.value)} />
         </label>
-        <button onClick={downloadCSV} disabled={!results.length}>Download CSV</button>
+
+        <button onClick={downloadCSV} disabled={!results.length}>↓ Export CSV</button>
       </div>
-      <p style={{ color: '#64748b', marginBottom: '1rem', fontSize: '0.85rem' }}>
-        Showing {results.length} of {total} results
+
+      <p className="results-count">
+        Showing <span>{results.length}</span> of <span>{total}</span> predictions
       </p>
+
       <ResultsTable results={results} />
     </div>
   )

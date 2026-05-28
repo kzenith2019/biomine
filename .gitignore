@@ -1,6 +1,4 @@
-data/raw/
-data/processed/
-data/features/
+data/
 __pycache__/
 *.pyc
 .pytest_cache/
@@ -9,3 +7,4 @@ dist/
 .env
 /models/
 /reports/
+config.yaml
