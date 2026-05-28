@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from src.api.routes import predict, explore
+from src.mcp.server import mcp_asgi_app
 
 app = FastAPI(title="BioMine API", version="1.0.0")
 
@@ -13,6 +14,8 @@ app.add_middleware(
 
 app.include_router(predict.router, prefix="/api")
 app.include_router(explore.router, prefix="/api")
+app.mount("/mcp", mcp_asgi_app)
+
 
 @app.get("/health")
 def health():
