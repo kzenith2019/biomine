@@ -39,7 +39,7 @@ def main():
     out = Path("data/features/dataset.parquet")
     out.parent.mkdir(parents=True, exist_ok=True)
     df.to_parquet(out)
-    print(f"Seeded {len(df)} rows → {out}")
+    print(f"Seeded {len(df)} rows -> {out}")
 
 if __name__ == "__main__":
     main()
